@@ -1,9 +1,6 @@
 # projetoUnesc
 E-commerce criado para fins acadêmicos com Next.js e Node
-=======
-=======
->>>>>>> af50a68e294e72748127b961121f346f999037e5
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+
 
 ## Getting Started
 
