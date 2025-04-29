@@ -37,7 +37,7 @@ export default function ListProducts() {
 
                 {!category || category === "all products" ? (
                     data?.map((product: ProductsProps) => (
-                        <div className="flex flex-col items-center justify-center w-96 h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-2" key={product.id}>
+                        <div className="flex flex-col items-center justify-center w-72 h-96 lg:w-96 lg:h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-4" key={product.id}>
                             <h1 className="text-center text-gray-500">{product.title}</h1>
                             <img className="w-40 h-40" src={product.image} alt={product.title} />
                             <p className="font-bold text-gray-500">R${product.price.toFixed(2)}</p>
@@ -45,15 +45,15 @@ export default function ListProducts() {
                                 addProduct(product);
                                 toast.success("Product added to cart!")
                             }}
-                                className="bg-blue-500 hover:bg-blue-700 transition duration-400 ease-in-out text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 cursor-pointer">
+                                className="bg-blue-500 hover:bg-blue-700 transition duration-400 ease-in-out text-white font-bold py-2 px-3 md:py-2 md:px-4 rounded-lg flex items-center gap-2 cursor-pointer">
                                 Add to Cart
-                                <MdAddShoppingCart className="w-5 h-5" />
+                                <MdAddShoppingCart className="w-4 h-4  md:w-5 md:h-5" />
                             </button>
                         </div>
                     ))
                 ) : (
                     filteredProducts?.map((product: ProductsProps) => (
-                        <div className="flex flex-col items-center justify-center w-96 h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-2" key={product.id}>
+                        <div className="flex flex-col items-center justify-center w-72 h-96 lg:w-96 lg:h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-4" key={product.id}>
                             <h1 className="text-center text-gray-500">{product.title}</h1>
                             <img className="w-40 h-40" src={product.image} alt={product.title} />
                             <p className="font-bold text-gray-500">R${product.price.toFixed(2)}</p>
@@ -61,9 +61,9 @@ export default function ListProducts() {
                                 addProduct(product);
                                 toast.success("Product added to cart!")
                             }}
-                                className="bg-blue-500 hover:bg-blue-700 text-white transition duration-400 ease-in-out font-bold py-2 px-4 rounded-lg flex items-center gap-2 cursor-pointer">
+                                className="bg-blue-500 hover:bg-blue-700 text-white transition duration-400 ease-in-out font-bold py-2 px-3 md:py-2 md:px-4 rounded-lg flex items-center gap-2 cursor-pointer">
                                 Add to Cart
-                                <MdAddShoppingCart className="w-5 h-5" />
+                                <MdAddShoppingCart className="w-4 h-4  md:w-5 md:h-5" />
                             </button>
                         </div>
                     ))
