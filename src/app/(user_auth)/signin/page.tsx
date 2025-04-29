@@ -20,6 +20,7 @@ import { FaGooglePlusG } from "react-icons/fa";
 import { BiLogInCircle } from "react-icons/bi";
 
 import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 
 
 const formRegisterSchema = z.object({
@@ -33,14 +34,17 @@ type FormRegister = z.infer<typeof formRegisterSchema>
 export default function SignIn() {
 
     const registerUser: SubmitHandler<FormRegister> = async (data: FormRegister) => {
-        const res = await signIn('credentials', {
-            email: data.email,
-            password: data.password,
-            redirect: true,
-            callbackUrl: '/'
-        })
+        try {
+            const res = await signIn('credentials', {
+                email: data.email,
+                password: data.password,
+                redirect: true,
+                callbackUrl: '/'
+            })
 
-        console.log(res);
+        } catch (error) {
+            toast.error("Error signing in");
+        }
     }
 
     const { register, handleSubmit, formState: { errors } } = useForm<FormRegister>({

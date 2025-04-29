@@ -3,6 +3,7 @@ import NextAuth, { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
 import CredentialsProvider from "next-auth/providers/credentials";
 import {getUsers} from "@/lib/utils";
+import { toast } from 'sonner';
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -19,19 +20,19 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Email and Password required');
+          toast.error('Email and Password required');
         }
 
         const users = await getUsers();
         
-        const user = users.find((user: { email: string; }) => user.email === credentials.email);
+        const user = users.find((user: { email: string; }) => user.email === credentials?.email);
 
         if (!user || !user.password) {
-          throw new Error('Email does not exist');
+          toast.error('Email does not exist');
         }
 
-        if (credentials.password !== user.password) {
-          throw new Error('Incorrect password');
+        if (credentials?.password !== user.password) {
+          toast.error('Incorrect password');
         }
 
         return {
