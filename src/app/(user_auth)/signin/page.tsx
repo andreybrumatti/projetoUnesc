@@ -22,6 +22,8 @@ import { BiLogInCircle } from "react-icons/bi";
 import { signIn } from "next-auth/react";
 import { toast } from "sonner";
 
+import { useRouter } from "next/navigation";
+
 
 const formRegisterSchema = z.object({
     email: z.string().email("Invalid email"),
@@ -33,21 +35,26 @@ type FormRegister = z.infer<typeof formRegisterSchema>
 
 export default function SignIn() {
 
-    const registerUser: SubmitHandler<FormRegister> = async (data: FormRegister) => {
-        try {
-            const res = await signIn('credentials', {
-                email: data.email,
-                password: data.password,
-                redirect: true,
-                callbackUrl: '/'
-            })
+    const router = useRouter();
 
-        } catch (error) {
-            toast.error("Error signing in");
+    const registerUser: SubmitHandler<FormRegister> = async (data: FormRegister) => {
+        const res = await signIn('credentials', {
+            email: data.email,
+            password: data.password,
+            redirect: false,
+        })
+
+        if (res?.error) {
+            toast.warning("Email or password incorrect!");
+
+            return;
         }
+
+        toast.success("Logged in successfully!");
+        router.push('/');
     }
 
-    const { register, handleSubmit, formState: { errors } } = useForm<FormRegister>({
+    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormRegister>({
         resolver: zodResolver(formRegisterSchema),
         mode: "onSubmit"
     })

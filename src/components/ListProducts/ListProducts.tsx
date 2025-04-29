@@ -38,14 +38,14 @@ export default function ListProducts() {
                 {!category || category === "all products" ? (
                     data?.map((product: ProductsProps) => (
                         <div className="flex flex-col items-center justify-center w-96 h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-2" key={product.id}>
-                            <h1 className="text-center">{product.title}</h1>
+                            <h1 className="text-center text-gray-500">{product.title}</h1>
                             <img className="w-40 h-40" src={product.image} alt={product.title} />
-                            <p>R${product.price.toFixed(2)}</p>
+                            <p className="font-bold text-gray-500">R${product.price.toFixed(2)}</p>
                             <button onClick={() => {
                                 addProduct(product);
-                                toast.success("Product added to cart")
+                                toast.success("Product added to cart!")
                             }}
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg flex items-center gap-2 cursor-pointer">
+                                className="bg-blue-500 hover:bg-blue-700 transition duration-400 ease-in-out text-white font-bold py-2 px-4 rounded-lg flex items-center gap-2 cursor-pointer">
                                 Add to Cart
                                 <MdAddShoppingCart className="w-5 h-5" />
                             </button>
@@ -54,14 +54,14 @@ export default function ListProducts() {
                 ) : (
                     filteredProducts?.map((product: ProductsProps) => (
                         <div className="flex flex-col items-center justify-center w-96 h-96 border shadow-md shadow-blue-300 rounded-lg p-10 gap-2" key={product.id}>
-                            <h1 className="text-center">{product.title}</h1>
+                            <h1 className="text-center text-gray-500">{product.title}</h1>
                             <img className="w-40 h-40" src={product.image} alt={product.title} />
-                            <p>R${product.price.toFixed(2)}</p>
+                            <p className="font-bold text-gray-500">R${product.price.toFixed(2)}</p>
                             <button onClick={() => {
                                 addProduct(product);
-                                toast.success("Product added to cart")
+                                toast.success("Product added to cart!")
                             }}
-                                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg flex items-center gap-2 cursor-pointer">
+                                className="bg-blue-500 hover:bg-blue-700 text-white transition duration-400 ease-in-out font-bold py-2 px-4 rounded-lg flex items-center gap-2 cursor-pointer">
                                 Add to Cart
                                 <MdAddShoppingCart className="w-5 h-5" />
                             </button>

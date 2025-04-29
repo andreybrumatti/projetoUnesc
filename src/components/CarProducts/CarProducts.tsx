@@ -75,8 +75,12 @@ export function CarProducts() {
                     </SheetDescription>
                 </SheetHeader>
                 <SheetFooter className="flex flex-row items-center justify-start ">
-                    <SheetTitle className="text-lg">Total Cart: </SheetTitle>
-                    <SheetDescription className="text-lg">R$ {getTotalCart().toFixed(2)}</SheetDescription>
+                    {cart.length !== 0 && (
+                        <div className="flex flex-row items-center gap-2">
+                            <SheetTitle className="text-lg text-gray-600">Total Cart: </SheetTitle>
+                            <SheetDescription className="text-lg font-bold text-gray-500">R$ {getTotalCart().toFixed(2)}</SheetDescription>
+                        </div>
+                    )}
                 </SheetFooter>
             </SheetContent>
         </Sheet>
