@@ -54,7 +54,7 @@ export default function SignIn() {
         router.push('/');
     }
 
-    const { register, handleSubmit, formState: { errors }, reset } = useForm<FormRegister>({
+    const { register, handleSubmit, formState: { errors } } = useForm<FormRegister>({
         resolver: zodResolver(formRegisterSchema),
         mode: "onSubmit"
     })

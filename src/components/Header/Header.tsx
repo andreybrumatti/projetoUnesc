@@ -53,7 +53,7 @@ export default function Header() {
                         </div>
                         <AlertDialogContent>
                             <AlertDialogHeader>
-                                <AlertDialogTitle>Sign out with Google account?</AlertDialogTitle>
+                                <AlertDialogTitle>Do you want to log out of your account?</AlertDialogTitle>
                                 <AlertDialogDescription>
                                     If you log out, you will be redirected to the login page.
                                 </AlertDialogDescription>
