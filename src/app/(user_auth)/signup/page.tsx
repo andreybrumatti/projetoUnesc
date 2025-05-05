@@ -66,6 +66,7 @@ export default function SignUp() {
         
             const user = await response.json();
             toast.success("User registered successfully!");
+            router.push("/signin");
 
             reset();
         
